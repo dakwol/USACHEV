@@ -1,0 +1,93 @@
+@use "./scss/" as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html{
+  font-size: 100%;
+
+  @include tablet{
+    font-size: 80%;
+  }
+
+  @include mobile{
+    font-size: 60%;
+  }
+}
+
+body{
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 1.5;
+
+  background-color: $body-bg;
+  color: $txt-color;
+
+  @include mobile {
+    margin-bottom: 3rem;
+  }
+}
+
+a{
+  text-decoration: none;
+  color: unset;
+}
+
+@media (hover:hover) {
+  a:hover{
+    color: $redHov;
+  }
+}
+
+button,
+input{
+  outline: 0;
+}
+
+ul{
+  list-style-type: none;
+}
+
+img{
+  max-width: 100%;
+}
+
+iframe{
+  border: 0;
+}
+
+.container{
+  max-width: 1660px;
+  margin: auto;
+}
+
+.mb-3{
+  margin-bottom: 3rem;
+}
+
+.mb-2{
+  margin-bottom: 2rem;
+}
+
+.section{
+  padding: 0 4rem;
+}
+
+.section__header{
+  @include flex(center, space-between);
+}
+
+.swiper-bg{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background:linear-gradient(0deg, rgba(38, 47, 52, 0.5), rgba(38, 47, 52, 0.5)), url('https://sun9-50.userapi.com/impg/6tgwVcUAc153D55J_y01aoWfjqYSv3foG8VKRQ/YiQR1vhz4xE.jpg?size=1920x1080&quality=96&sign=209b50f9e285c51b3697ee08dac3f9fa&type=album') center center fixed no-repeat;
+  background-size: cover;
+  padding-top: 6rem;
+}

@@ -1,0 +1,176 @@
+@use "../../scss/" as *;
+
+.swiper{
+
+    height: 100%;
+}
+
+.swiper-title{
+    font-family: $font-family-title;
+    position: absolute;
+    top: 50%;
+    left:0;
+    transform: translate(-30%, -50%) rotateZ(90deg);
+    color: transparent;
+    font-size: 120px;
+    -webkit-text-stroke: .1px #fff;
+    text-transform: uppercase;
+    overflow: hidden;
+    
+    &::after{
+        content: '';
+        width: 100%;
+        height: 2px;
+        background-color: $red;
+        position: absolute;
+        top: 15px;
+        left: 0;
+        animation: line 4s linear infinite;
+        @keyframes line {
+            0%{
+                transform: translateX(-100%);
+            }
+            50%{
+                transform: translateX(0);
+            }
+            100%{
+                transform: translateX(100%);
+            }
+        }
+    }
+}
+
+
+
+.swiper__container{
+    width: 100%;
+
+    height: 80vh;
+    display: flex;
+	flex-grow: 1;
+    justify-content: center;
+   
+}
+
+.swiperSl{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    clip-path: polygon(40px 0,100% 0,100% calc(100% - 40px), calc(100% - 40px) 100%,0 100%,0 40px);
+}
+
+.left{
+    width: 50%;
+    height: 100%;
+    background-color: $body-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 9px 0px 8px rgba(0, 0, 0, 0.25);
+
+    @include mobile{
+        width: 100%;
+        height: 50%;
+    }
+
+    .swipe-title{
+        position: absolute;
+        top:30%;
+        left: 0;
+        z-index: 1000;
+        transform: translate(-50%) rotateZ(90deg);
+        font-family: $font-family-title;
+        color: transparent;
+        font-size: 50px;
+        -webkit-text-stroke: .1px #fff;
+        text-transform: uppercase;
+
+        @include mobile{
+            bottom: -50%;
+            left: 50%;
+            transform: translate(-50%, 50%) rotateZ(0);
+            -webkit-text-stroke: .1px $red;
+            font-size: 35px;
+        }
+    }
+
+}
+
+.right-side{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    &::before{
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        content: '';
+        width: 17px;
+        height: 17px;
+        background-color: $red;
+        animation: cube-two 2s linear infinite;
+        @keyframes cube-two {
+            0%{
+                transform: translate(0, 0);
+            }
+            25%{
+                transform: translate(2px, 2px);
+              
+            }
+
+            50%{
+                transform: translate(0, 0);
+
+            }
+
+            75%{
+                transform: translate(-2px, -2px) ;
+            
+            }
+            100%{
+                transform: translate(0, 0);
+              
+            }
+        }
+    }
+    &::after{
+        position: absolute;
+        bottom: 30px;
+        right: 30px;
+        content: '';
+        width: 14px;
+        height: 14px;
+        border: 2px solid $red;
+        animation: cube 2s linear infinite;
+
+        @keyframes cube {
+            0%{
+                transform: translate(0, 0);
+                
+            }
+            25%{
+                transform: translate(-2px, -2px);
+                
+            }
+
+            50%{
+                transform: translate(0, 0);
+                
+
+            }
+
+            75%{
+                transform: translate(2px, 2px);
+
+            }
+            100%{
+                transform: translate(0, 0);
+                
+            }
+        }
+    }
+}

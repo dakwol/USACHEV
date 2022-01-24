@@ -1,0 +1,134 @@
+@use "../../scss/" as *;
+
+.logo{
+    @include flex(left, unset);
+    img{
+
+        width: 10rem;
+        
+        @include mobile {
+      
+            width: 15rem;
+            margin-right: 0;
+        }
+    }
+}
+
+.header{
+    height: $header-height;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: $body-bg;
+    color: $white;
+    text-transform: uppercase;
+
+    &__wrap {
+        @include flex(center, space-between);
+        height: 100%;
+        padding: 0 2rem;
+
+        @include mobile {
+            justify-content: center;
+        }
+    }
+
+    &__nav{
+        @include flex(center, unset);
+
+        & > * ~ * {
+            margin-left: 1rem;
+        }
+
+        li {
+            padding: 0 32px;
+            font-weight: 700;
+            position: relative;
+            font-size: 1rem;
+            overflow: hidden;
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 0;
+                width: 1px;
+                transition: .3s linear;
+            
+                background-color: $red;
+                animation-direction:reverse;
+            }
+            &::before{
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                
+                width: 1px;
+                transition: .3s linear;
+                height: 0;
+                background-color: $red;
+   
+            }
+
+            @keyframes nav__btn {
+                0%{
+                    bottom: -50%;
+                }
+               
+                50%{
+                    bottom: 50%;
+                }
+
+                100%{
+                    bottom: -50%;
+                }
+                
+            }
+
+            @keyframes nav__btn-two {
+                0%{
+                    bottom: 50%;
+                }
+               
+                50%{
+                    bottom: -50%;
+                }
+
+                100%{
+                    bottom: 50%;
+                }
+            }
+            &.active::before{
+                animation: nav__btn 3s linear infinite;
+                height: 100%;
+            }
+            &.active::after{
+                height: 100%;
+                animation: nav__btn-two 3s linear infinite;
+            }
+            &.active{
+                color: $red;                
+            }
+        }
+
+        @include mobile {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5rem;
+            width: 100%;
+            background-color: $body-bg;
+            padding: 0 1rem;
+            box-shadow: $box-shadow;
+
+            @include flex(center, space-between);
+
+            & > * ~ * {
+                margin-left: 0;
+            }
+        }
+    }
+}

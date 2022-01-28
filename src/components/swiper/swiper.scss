@@ -113,6 +113,8 @@
     position: relative;
     width: 50%;
     height: 100%;
+    padding: 4rem;
+    overflow: scroll;
     &::before{
         position: absolute;
         bottom: 30px;
@@ -181,5 +183,13 @@
                 
             }
         }
+    }
+
+    .img-grid{
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 2vw);
+        grid-gap: 5px;
+ 
     }
 }

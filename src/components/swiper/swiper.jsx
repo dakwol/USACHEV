@@ -21,20 +21,19 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-
-import ModelD from '../3d/ModelD';
-
+import Users from '../user-component/users';
 
 export default () => {
-  const [swiperRef, setSwiperRef] = useState(null);
+  const [swiperRef, setSwiperRef] = useState(<Users />);
  
-
   const slides = Array.from({ length: 10 }).map(
-    (_, index) => `Slide ${index + 1}`
+    (el, index) => `Slide ${index + 1}`
   );
 
   return (
+
     <>
+    
       <Swiper
       className='swiper__container'
       modules={[Navigation, A11y, EffectFade, Autoplay]}
@@ -60,15 +59,9 @@ export default () => {
       >
         {slides.map((slideContent, index) => (
           <SwiperSlide key={slideContent} virtualIndex={index}>
-             <div className='swiperSl'>
-                  <div className='left'>
-                    <h1 className='swipe-title'>Hammer</h1>
-                    <ModelD />
-                  </div>
-                  <div className='right-side'>
-                  hello
-                  </div>
-                </div>
+             
+                    <Users />
+                    
           </SwiperSlide>
         ))}
       </Swiper>

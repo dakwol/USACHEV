@@ -11,12 +11,16 @@ export default class CreateUser extends Component {
         this.onChangeSwiperName = this.onChangeSwiperName.bind(this);
         this.onChangeSwiperModel = this.onChangeSwiperModel.bind(this);
         this.onChangeSwiperImg = this.onChangeSwiperImg.bind(this);
+        this.onChangeSwiperInfo = this.onChangeSwiperInfo.bind(this);
+        this.onChangeSwiperHar = this.onChangeSwiperHar.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             name: '',
             model: '',
-            Img: '',
+            Img: [],
+            info: '',
+            har: [],
         }
     }
 
@@ -32,13 +36,23 @@ export default class CreateUser extends Component {
         this.setState({ Img: e.target.value })
     }
 
+    onChangeSwiperInfo(e) {
+        this.setState({ info: e.target.value })
+    }
+
+    onChangeSwiperHar(e) {
+        this.setState({ har: e.target.value })
+    }
+
     onSubmit(e) {
         e.preventDefault()
 
         const userObject = {
             name: this.state.name,
             model: this.state.model,
-            Img: this.state.Img
+            Img: this.state.Img,
+            info: this.state.info,
+            har: this.state.har
         };
 
         axios.post('http://localhost:4000/swiper/create', userObject)
@@ -48,7 +62,7 @@ export default class CreateUser extends Component {
                 console.log(error)
             });
 
-        this.setState({ name: '', model: '', Img: '' })
+        this.setState({ name: '', model: '', Img: [], info: '', har: [] })
     }
 
 
@@ -66,7 +80,15 @@ export default class CreateUser extends Component {
                     </div>
                     <div className="form-group">
                         <label>Add User Img</label>
-                        <input type="text" value={this.state.Img} onChange={this.onChangeSwiperImg} className="form-control" />
+                        <input type="file" multiple value={this.state.Img} onChange={this.onChangeSwiperImg} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Add User info</label>
+                        <textarea type="text" value={this.state.info} onChange={this.onChangeSwiperInfo} className="form-control" />
+                    </div>
+                    <div className="form-group">
+                        <label>Add User info</label>
+                        <textarea type="text" value={this.state.har} onChange={this.onChangeSwiperHar} className="form-control" />
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-success btn-block" />

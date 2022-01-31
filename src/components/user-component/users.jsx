@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DataTable from './data-table';
 
+
+
 export default class Users extends Component {
+    
 
     constructor(props) {
         super(props);
@@ -24,6 +27,8 @@ export default class Users extends Component {
             return <DataTable obj={data} key={i} />;
         });
     }
+
+    
 
     render() {
         return (

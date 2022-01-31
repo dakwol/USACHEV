@@ -9,8 +9,14 @@ let userSchema = new Schema({
         type: String
     },
     Img: {
+        type: Array
+    },
+    info: {
         type: String
-    }
+    },
+    har: {
+        type: Array
+    },
 }, {
         collection: 'swiper'
     })
